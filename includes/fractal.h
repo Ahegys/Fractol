@@ -36,5 +36,6 @@ int     event_caller();
 int		background(t_data *mlx, t_img *img);
 void	pixel(t_img *img, int x, int y, int color);
 int		mouse_hook(int button, int x, int y);
+int		potency(int number, int power);
 #endif // FRACTOL_H
 
