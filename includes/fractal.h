@@ -4,7 +4,9 @@
 #include <mlx.h>
 #include <unistd.h>
 #include <stdlib.h>
-
+#include <math.h>
+#include <complex.h>
+#include <tgmath.h>
 # define WIDTH 400
 # define HEIGHT 400
 
