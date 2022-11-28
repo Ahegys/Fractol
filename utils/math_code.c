@@ -14,3 +14,4 @@ int		potency(int number, int power)
 	}
 	return (n);
 }
+
