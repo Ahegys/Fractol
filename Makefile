@@ -4,7 +4,7 @@ FILES = $(MAIN) $(SRC) $(UTILS)
 
 SRC = ./src/window.c ./src/print_pixel.c ./src/events_hooks/events.c
 
-UTILS = ./utils/math_code.c
+UTILS = ./utils/math_code.c ./utils/draw.c
 
 MAIN = ./main.c
 # =======================================================ARCHIVES-END=============================================
