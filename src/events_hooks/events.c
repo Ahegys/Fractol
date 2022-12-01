@@ -43,9 +43,9 @@ void	mandel_set(t_data *mlx)
 {
 	mlx->frac.min_r_num = -2.2; //modifica o posicionamento dele (Menor valor vai para a esquerda maior para a direita)
 	mlx->frac.max_r_num = 3.0; //modifica a escala do seu fractol (menor valor aproxima e maior valor diminui a escala)
-		mlx->frac.min_i_num = -1.8; //modifica a altura em que se encontra (menor valor para cima menor valor para baixo)
+	mlx->frac.min_i_num = -1.8; //modifica a altura em que se encontra (menor valor para cima maior valor para baixo)
 	mlx->frac.max_i_num = (mlx->frac.max_r_num - mlx->frac.min_r_num)
-			* HEIGHT / WIDTH + mlx->frac.min_i_num;
-	mlx->frac.max_inter = 100;
+			* HEIGHT / WIDTH + mlx->frac.min_i_num; // essa conta faz com que as posiçoes funcionem de forma correta, alterar o valor devera altera as posições do fractal
+	mlx->frac.max_inter = 100;// nivel de detalhamento do fractol (quanto mais proximo do 100 mais detalhes, porem menos desempenho, quando menor, menos detalhes porem mais desempenhos)
 }
 
