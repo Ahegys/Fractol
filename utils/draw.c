@@ -8,7 +8,7 @@ int	set_fractal(int x, int y, int i, t_data *mlx)
 	if (i == mlx->frac.max_inter)
 		color = 0xfefefe;
 	else 
-		color = i * colors();
+		color = i * 102111255;
 	pixel(mlx, x, y, color);	
 
 	return (1);
