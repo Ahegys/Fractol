@@ -41,9 +41,9 @@ int	event_caller(t_data *mlx, t_img *img)
 
 void	mandel_set(t_data *mlx)
 {
-	mlx->frac.min_r_num = -2.0;
-	mlx->frac.max_r_num = 0.6;
-	mlx->frac.min_i_num = -1.2;
+	mlx->frac.min_r_num = -2.2; //modifica o posicionamento dele (Menor valor vai para a esquerda maior para a direita)
+	mlx->frac.max_r_num = 3.0; //modifica a escala do seu fractol (menor valor aproxima e maior valor diminui a escala)
+		mlx->frac.min_i_num = -1.8; //modifica a altura em que se encontra (menor valor para cima menor valor para baixo)
 	mlx->frac.max_i_num = (mlx->frac.max_r_num - mlx->frac.min_r_num)
 			* HEIGHT / WIDTH + mlx->frac.min_i_num;
 	mlx->frac.max_inter = 100;
