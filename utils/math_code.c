@@ -24,8 +24,8 @@ double		mandelbrot(double num_r, double num_i, t_data *prop)
 	inter = 0;
 	while (inter < prop->frac.max_inter)
 	{
-		cache = x * x - y * y + num_r;
-		y = 2 * x * y + num_i;
+		cache = x * x - y * y + num_r; // subtrair com o num_r o fractol espelha
+		y = 2 * x * y + num_i; //valor de (2) padrão sera de mandelbrot trocando o valor de 2 pra x, vira outro fractol, colocando o -2 vira outro, altere quanto quiser pra achar formas novas
 		x = cache;
 		if (x * x + y + y > 4)
 				return (inter);
