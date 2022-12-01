@@ -2,7 +2,7 @@
 
 double		r_num(int x, t_data *prop)
 {
-	return (prop->frac.max_r_num + 
+	return (prop->frac.min_r_num + 
 			(x * prop->frac.max_r_num - prop->frac.min_r_num) / WIDTH);
 }
 

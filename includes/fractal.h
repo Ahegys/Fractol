@@ -4,8 +4,8 @@
 #include <mlx.h>
 #include <unistd.h>
 #include <stdlib.h>
-# define WIDTH 400
-# define HEIGHT 400
+# define WIDTH 700
+# define HEIGHT 700
 
 // ===================== MACROS
 
