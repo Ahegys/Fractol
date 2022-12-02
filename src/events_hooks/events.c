@@ -20,9 +20,17 @@ int	key_hook(int key_code, t_data *mlx)
 	return (0);
 }
 
-int		mouse_hook(int button, int x, int y)
+int		mouse_hook(int button, int x, int y, t_data *mlx)
 {
 	printf("MouseBtn >> %i\nPosX >> %i\nPosY >> %i\n", button, x, y);
+	if (button == 4)
+		mlx->frac.min_i_num--;
+	if (button == 5)
+		mlx->frac.min_i_num++;
+	if (button == 6)
+		mlx->frac.min_r_num--;
+	if (button == 7)
+		mlx->frac.min_r_num++;
 	return (0);
 }
 

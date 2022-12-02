@@ -4,7 +4,7 @@ int	set_fractal(int x, int y, int i, t_data *mlx)
 {
 	int	color;
 	//color coloque as cores que quiser
-	color =  0xff0066;
+	//color =  0xff0066; //rosa
 	if (i == mlx->frac.max_inter)
 		color = 0xfefefe;
 	else 
