@@ -49,7 +49,7 @@ int	draw(t_data *mlx);
 int		background(t_data *mlx);
 int	event_caller(t_data *mlx, t_img *img);
 void	pixel(t_data *mlx, int x, int y, int color);
-int		mouse_hook(int button, int x, int y);
+int		mouse_hook(int button, int x, int y, t_data *mlx);
 int		potency(int number, int power);
 double		r_num(int x, t_data *prop);
 #endif // FRACTOL_H
