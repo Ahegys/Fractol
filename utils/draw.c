@@ -18,7 +18,7 @@ int	draw(t_data *mlx)
 {
 	double x;
 	double y;
-	int		inter;
+	double		inter;
 
 	x = -1;
 	while (x++ < WIDTH)
