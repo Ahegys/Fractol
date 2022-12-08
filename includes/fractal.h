@@ -4,12 +4,18 @@
 #include <mlx.h>
 #include <unistd.h>
 #include <stdlib.h>
-# define WIDTH 400
-# define HEIGHT 400
+# define WIDTH 700
+# define HEIGHT 700
 
 // ===================== MACROS
 
 # define ESC 65307
+
+typedef	struct l_mouse
+{
+	int	x;
+	int	y;
+}				t_mouse;
 
 typedef struct l_props
 {
@@ -37,6 +43,7 @@ typedef	struct l_data
 	void	*win;
 	t_img	img;
 	t_props	frac;
+	t_mouse	pos;
 }				t_data;
 
 void	mandel_set(t_data *mlx);

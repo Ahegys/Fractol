@@ -3,12 +3,11 @@
 int	set_fractal(int x, int y, int i, t_data *mlx)
 {
 	int	color;
-	//color coloque as cores que quiser
-	//color =  0xff0066; //rosa
+	color =  0xff0066; //rosa
 	if (i == mlx->frac.max_inter)
 		color = 0xfefefe;
 	else 
-		color = i * 265; // faz o jogo de core de acord com rgb(255,255,255) (255215 cor bonita) 255255 tbm 265 se torna neon
+		color = color * i * i; // faz o jogo de core de acord com rgb(255,255,255) (255215 cor bonita) 255255 tbm 265 se torna neon
 	pixel(mlx, x, y, color);	
 
 	return (1);
