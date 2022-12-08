@@ -21,38 +21,30 @@ int	key_hook(int key_code, t_data *mlx)
 			free(mlx->init);
 		exit(0);
 	}
+		if (key_code == 'r')
+		mandel_set(mlx);
 	return (0);
 }
 
 int		mouse_hook(int button, int x, int y, t_data *mlx)
 {
-	printf("MouseBtn >> %i\nPosX >> %i\nPosY >> %i\n", button, x, y);
+	mlx->pos.x = x;
+//	mlx->pos.y = y;
+	printf("x: %i\n y: %i\n", x, y);
 	if (button == 4)
 	{
-		mlx->frac.max_r_num = mlx->frac.max_r_num - 0.1;
-		mlx->frac.min_r_num = mlx->frac.min_r_num + 0.05;
-		mlx->frac.min_i_num = mlx->frac.min_i_num + 0.05;
-		mlx->frac.max_i_num = mlx->frac.max_i_num - 0.1;
+		mlx->frac.max_r_num -= mlx->frac.max_r_num * 0.115;
+		mlx->frac.min_r_num -= mlx->frac.min_r_num * 0.115;
+		mlx->frac.min_i_num -= mlx->frac.min_i_num * 0.115;
+		mlx->frac.max_i_num -= mlx->frac.max_i_num * 0.115;
 	}
 	if (button == 5)
 	{
-		mlx->frac.max_r_num = mlx->frac.max_r_num + 0.1;
-		mlx->frac.min_r_num = mlx->frac.min_r_num - 0.05;
-		mlx->frac.min_i_num = mlx->frac.min_i_num - 0.05;
-		mlx->frac.max_i_num = mlx->frac.max_i_num + 0.1;
+		mlx->frac.max_r_num += mlx->frac.max_r_num * 0.155;
+		mlx->frac.min_r_num += mlx->frac.min_r_num * 0.155;
+		mlx->frac.min_i_num += mlx->frac.min_i_num * 0.155;
+		mlx->frac.max_i_num += mlx->frac.max_i_num * 0.155;
 	}
-/*	if (button == 2)
-		mlx->frac.max_r_num = mlx->frac.max_r_num - 0.05;
-	if (button == 1)
-		mlx->frac.max_r_num = mlx->frac.max_r_num + 0.05;
-	if (button == 4)
-		mlx->frac.min_i_num = mlx->frac.min_i_num - 0.05;
-	if (button == 5)
-		mlx->frac.min_i_num = mlx->frac.min_i_num + 0.05;
-	if (button == 6)
-		mlx->frac.min_r_num = mlx->frac.min_r_num - 0.05;
-	if (button == 7)
-		mlx->frac.min_r_num = mlx->frac.min_r_num + 0.05; */
 	return (0);
 }
 
@@ -72,10 +64,9 @@ int	event_caller(t_data *mlx, t_img *img)
 void	mandel_set(t_data *mlx)
 {
 	mlx->frac.min_r_num = -2.2; //modifica o posicionamento dele (Menor valor vai para a esquerda maior para a direita)
-	mlx->frac.max_r_num = 3.0; //modifica a escala do seu fractol (menor valor aproxima e maior valor diminui a escala)
-	mlx->frac.min_i_num = -1.8; //modifica a altura em que se encontra (menor valor para cima maior valor para baixo)
+	mlx->frac.max_r_num =1.0; //modifica a escala do seu fractol (menor valor aproxima e maior valor diminui a escala)
+	mlx->frac.min_i_num = -1.5; //modifica a altura em que se encontra (menor valor para cima maior valor para baixo)
 	mlx->frac.max_i_num = (mlx->frac.max_r_num - mlx->frac.min_r_num)
 			* HEIGHT / WIDTH + mlx->frac.min_i_num; // essa conta faz com que as posiçoes funcionem de forma correta, alterar o valor devera altera as posições do fractal
 	mlx->frac.max_inter = 100;// nivel de detalhamento do fractol (quanto mais proximo do 100 mais detalhes, porem menos desempenho, quando menor, menos detalhes porem mais desempenhos)
 }
-
