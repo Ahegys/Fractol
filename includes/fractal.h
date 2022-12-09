@@ -42,6 +42,10 @@ typedef	struct l_data
 	void	*init;
 	void	*win;
 	t_img	img;
+	int		selection;
+	double	x;
+	double	im;
+	int		colors;
 	t_props	frac;
 	t_mouse	pos;
 }				t_data;
@@ -59,5 +63,6 @@ void	pixel(t_data *mlx, int x, int y, int color);
 int		mouse_hook(int button, int x, int y, t_data *mlx);
 int		potency(int number, int power);
 float	r_num(double x, t_data *prop);
+int		julia(double num_r, double num_i, t_data *prop);
 #endif // FRACTOL_H
 

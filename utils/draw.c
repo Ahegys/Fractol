@@ -3,11 +3,11 @@
 int	set_fractal(int x, int y, int i, t_data *mlx)
 {
 	int	color;
-	color =  0xff0066; //rosa
+	color =  265; //rosa
 	if (i == mlx->frac.max_inter)
 		color = 0xfefefe;
-	else 
-		color = color * i * i; // faz o jogo de core de acord com rgb(255,255,255) (255215 cor bonita) 255255 tbm 265 se torna neon
+	else
+		color =  i * color;
 	pixel(mlx, x, y, color);	
 
 	return (1);
@@ -25,7 +25,10 @@ int	draw(t_data *mlx)
 			y = -1;
 			while (y++ < HEIGHT)
 			{
-				inter = mandelbrot(r_num(x, mlx), i_num(y, mlx), mlx); //sem isso e so um pixel
+				if (mlx->selection == 1)
+					inter = julia(r_num(x, mlx), i_num(y, mlx), mlx); //sem isso e so um pixel
+				else
+					inter = mandelbrot(r_num(x, mlx), i_num(y, mlx), mlx); //sem isso e so um pixel
 				set_fractal(x, y, inter, mlx);
 			}
 	}

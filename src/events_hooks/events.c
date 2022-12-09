@@ -22,7 +22,11 @@ int	key_hook(int key_code, t_data *mlx)
 		exit(0);
 	}
 		if (key_code == 'r')
-		mandel_set(mlx);
+			mandel_set(mlx);
+		if (key_code == '1')
+			mlx->selection = 1;
+		else
+			mlx->selection = 0;
 	return (0);
 }
 
