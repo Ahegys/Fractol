@@ -19,16 +19,16 @@ int	draw(t_data *mlx)
 	double y;
 	double		inter;
 
-	x = -1;
+	x = -1.0;
 	while (x++ < WIDTH)
 	{
-			y = -1;
+			y = -1.0;
 			while (y++ < HEIGHT)
 			{
 				if (mlx->selection == 1)
-					inter = julia(r_num(x, mlx), i_num(y, mlx), mlx); //sem isso e so um pixel
+					inter = julia(r_num(x, mlx), i_num(y, mlx), mlx);
 				else
-					inter = mandelbrot(r_num(x, mlx), i_num(y, mlx), mlx); //sem isso e so um pixel
+					inter = mandelbrot(r_num(x, mlx), i_num(y, mlx), mlx);
 				set_fractal(x, y, inter, mlx);
 			}
 	}

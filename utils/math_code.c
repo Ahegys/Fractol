@@ -1,21 +1,28 @@
 #include "../includes/fractal.h"
-float		r_num(double x, t_data *prop)
+
+double		abst(double x)
+{
+	if (x < 0)
+		return (-x);
+	else
+		return (x);
+}
+double	r_num(int x, t_data *f)
 {
 	double	range;
 
-	range = prop->frac.max_r_num - prop->frac.min_r_num;
-	return (prop->frac.min_r_num + (x *  range) / WIDTH);
+	range = f->frac.max_r_num - f->frac.min_r_num;
+	return (f->frac.min_r_num + (x * range) / WIDTH);
 }
-
-float		i_num(double y, t_data *prop)
+double	i_num(int y, t_data *f)
 {
 	double	range;
 
-	range = prop->frac.max_i_num - prop->frac.min_i_num;
-	return (prop->frac.min_i_num + (y *  range) / HEIGHT);
+	range = f->frac.max_i_num - f->frac.min_i_num;
+	return (f->frac.min_i_num + (y * range) / HEIGHT);
 }
 
-int		mandelbrot(double num_r, double num_i, t_data *prop)
+float	burnship(double num_r, double num_i, t_data *prop)
 {
 	double	x;
 	double	y;
@@ -27,17 +34,40 @@ int		mandelbrot(double num_r, double num_i, t_data *prop)
 	inter = 0;
 	while (inter < prop->frac.max_inter)
 	{
-		cache = x * x - y * y + num_r; // subtrair com o num_r o fractol espelha
-		y = 2 * x * y + num_i; //valor de (2) padrão sera de mandelbrot trocando o valor de 2 pra x, vira outro fractol, colocando o -2 vira outro, altere quanto quiser pra achar formas novas
+		cache = x * x - y * y + num_r;
+		y = abst(2 * x * y) + num_i;
 		x = cache;
-		if (x * x + y * y > 4.0) // quando essa conta for maior que o numero posto ele tende ao infinito, ele aumenta o tamanho do fractal
+		if (x * x + y * y > 4.0)
 				return (inter);
 		inter++;
 	};
 	return (inter);
 }
 
-int		julia(double num_r, double num_i, t_data *prop)
+
+float		mandelbrot(double num_r, double num_i, t_data *prop)
+{
+	double	x;
+	double	y;
+	double	inter;
+	double	cache;
+	
+	x = 0;
+	y = 0;
+	inter = 0;
+	while (inter < prop->frac.max_inter)
+	{
+		cache = x * x - y * y + num_r;
+		y = 2 * x * y + num_i;
+		x = cache;
+		if (x * x + y * y > 4.0)
+				return (inter);
+		inter++;
+	};
+	return (inter);
+}
+
+float		julia(double num_r, double num_i, t_data *prop)
 {
 	double	x;
 	double	y;
@@ -49,8 +79,8 @@ int		julia(double num_r, double num_i, t_data *prop)
 	inter = 0;
 	while (inter < prop->frac.max_inter)
 	{
-		cache = x * x - y * y + -0.4;
-		y = 2 * x * y - 0.6; 
+		cache = x * x - y * y + prop->pos.x;
+		y = 2 * x * y - prop->pos.y; 
 		x = cache;
 		if (x * x + y * y > 4.0)
 				return (inter);

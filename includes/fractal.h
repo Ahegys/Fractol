@@ -13,8 +13,8 @@
 
 typedef	struct l_mouse
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }				t_mouse;
 
 typedef struct l_props
@@ -53,8 +53,8 @@ typedef	struct l_data
 void	mandel_set(t_data *mlx);
 int		screen(t_data *mlx);
 int     key_hook(int key_code, t_data *mlx);
-int		mandelbrot(double num_r, double num_i, t_data *prop);
-float	i_num(double y, t_data *prop);
+float	mandelbrot(double num_r, double num_i, t_data *prop);
+double	i_num(int y, t_data *f);
 int		set_fractal(int x, int y, int i, t_data *mlx);
 int		draw(t_data *mlx);
 int		background(t_data *mlx);
@@ -62,7 +62,8 @@ int		event_caller(t_data *mlx, t_img *img);
 void	pixel(t_data *mlx, int x, int y, int color);
 int		mouse_hook(int button, int x, int y, t_data *mlx);
 int		potency(int number, int power);
-float	r_num(double x, t_data *prop);
-int		julia(double num_r, double num_i, t_data *prop);
+float	burnship(double num_r, double num_i, t_data *prop);
+double	r_num(int x, t_data *f);
+float		julia(double num_r, double num_i, t_data *prop);
 #endif // FRACTOL_H
 

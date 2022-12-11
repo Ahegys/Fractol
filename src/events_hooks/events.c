@@ -6,7 +6,12 @@ int		render(t_data *mlx)
 	return (1);
 }
 
-
+int		tracker(int x, int y, t_data *mlx)
+{
+	mlx->pos.x = r_num(x, mlx);
+	mlx->pos.y = i_num(y, mlx);
+	return (1);
+}
 int	key_hook(int key_code, t_data *mlx)
 {
 	if (key_code == 'z')
@@ -32,9 +37,7 @@ int	key_hook(int key_code, t_data *mlx)
 
 int		mouse_hook(int button, int x, int y, t_data *mlx)
 {
-	mlx->pos.x = x;
-//	mlx->pos.y = y;
-	printf("x: %i\n y: %i\n", x, y);
+	printf("%i\n, %i\n", x, y);
 	if (button == 4)
 	{
 		mlx->frac.max_r_num -= mlx->frac.max_r_num * 0.115;
@@ -58,6 +61,7 @@ int	event_caller(t_data *mlx, t_img *img)
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_len, &img->endian);
 	mlx->img = *img;
 	mandel_set(mlx);
+	mlx_hook(mlx->win, 6, 1L << 6, tracker, mlx);
 	mlx_mouse_hook(mlx->win, &mouse_hook, mlx);
 	mlx_loop_hook(mlx->init, &render, mlx);
 	mlx_key_hook(mlx->win, &key_hook, mlx);
@@ -67,10 +71,10 @@ int	event_caller(t_data *mlx, t_img *img)
 
 void	mandel_set(t_data *mlx)
 {
-	mlx->frac.min_r_num = -2.2; //modifica o posicionamento dele (Menor valor vai para a esquerda maior para a direita)
-	mlx->frac.max_r_num =1.0; //modifica a escala do seu fractol (menor valor aproxima e maior valor diminui a escala)
-	mlx->frac.min_i_num = -1.5; //modifica a altura em que se encontra (menor valor para cima maior valor para baixo)
+	mlx->frac.min_r_num = -2.2;
+	mlx->frac.max_r_num =1.0; 
+	mlx->frac.min_i_num = -1.5;
 	mlx->frac.max_i_num = (mlx->frac.max_r_num - mlx->frac.min_r_num)
-			* HEIGHT / WIDTH + mlx->frac.min_i_num; // essa conta faz com que as posiçoes funcionem de forma correta, alterar o valor devera altera as posições do fractal
-	mlx->frac.max_inter = 100;// nivel de detalhamento do fractol (quanto mais proximo do 100 mais detalhes, porem menos desempenho, quando menor, menos detalhes porem mais desempenhos)
+			* HEIGHT / WIDTH + mlx->frac.min_i_num;
+	mlx->frac.max_inter = 100;
 }
