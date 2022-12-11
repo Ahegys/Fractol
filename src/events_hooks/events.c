@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   events.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afelipe- <afelipe->                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/11 20:03:15 by afelipe-          #+#    #+#             */
+/*   Updated: 2022/12/11 20:03:15 by afelipe-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/fractal.h"
 int		render(t_data *mlx)
 {
@@ -20,11 +32,7 @@ int	key_hook(int key_code, t_data *mlx)
 		mlx->frac.max_inter = mlx->frac.max_inter - 10;
 	if (key_code == ESC)
 	{
-		mlx_destroy_window(mlx->init, mlx->win);
-		mlx_destroy_display(mlx->init);
-		if (mlx->init)
-			free(mlx->init);
-		exit(0);
+		close_window(mlx);
 	}
 		if (key_code == 'r')
 			mandel_set(mlx);

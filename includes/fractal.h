@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractal.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afelipe- <afelipe->                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/11 20:03:03 by afelipe-          #+#    #+#             */
+/*   Updated: 2022/12/11 20:03:04 by afelipe-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 #include <stdio.h>
@@ -56,6 +68,7 @@ int     key_hook(int key_code, t_data *mlx);
 float	mandelbrot(double num_r, double num_i, t_data *prop);
 double	i_num(int y, t_data *f);
 int		set_fractal(int x, int y, int i, t_data *mlx);
+int	close_window(t_data *mlx);
 int		draw(t_data *mlx);
 int		background(t_data *mlx);
 int		event_caller(t_data *mlx, t_img *img);
