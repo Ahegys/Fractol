@@ -6,7 +6,7 @@
 /*   By: afelipe- <afelipe->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:03:37 by afelipe-          #+#    #+#             */
-/*   Updated: 2022/12/11 20:03:45 by afelipe-         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:38:53 by afelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,20 @@ int	close_window(t_data *mlx)
 		free(mlx->init);
 	exit(0);
 	return (1);
+}
+
+int cmp(const char *s1, const char *s2)
+{
+
+	const unsigned char *us1;
+	const unsigned char *us2;
+
+	us1 = (unsigned char *) s1;
+	us2 = (unsigned char *) s2;
+	while (*us1 == *us2 && *us1 != '\0')
+	{
+    	us1++;
+    	us2++;
+	}
+	return (*us1 > *us2) - (*us1 < *us2);
 }

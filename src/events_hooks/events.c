@@ -6,7 +6,7 @@
 /*   By: afelipe- <afelipe->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:03:15 by afelipe-          #+#    #+#             */
-/*   Updated: 2022/12/11 20:03:15 by afelipe-         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:23:38 by afelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	event_caller(t_data *mlx, t_img *img)
 	mlx_mouse_hook(mlx->win, &mouse_hook, mlx);
 	mlx_loop_hook(mlx->init, &render, mlx);
 	mlx_key_hook(mlx->win, &key_hook, mlx);
+	mlx_hook(mlx->win, 17, 0L, &close_window, mlx);
 	mlx_loop(mlx->init);
 	return (0);
 }

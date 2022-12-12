@@ -6,7 +6,7 @@
 /*   By: afelipe- <afelipe->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:03:03 by afelipe-          #+#    #+#             */
-/*   Updated: 2022/12/11 20:03:04 by afelipe-         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:40:41 by afelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int     key_hook(int key_code, t_data *mlx);
 float	mandelbrot(double num_r, double num_i, t_data *prop);
 double	i_num(int y, t_data *f);
 int		set_fractal(int x, int y, int i, t_data *mlx);
-int	close_window(t_data *mlx);
+int 	cmp(const char *s1, const char *s2);
+int		close_window(t_data *mlx);
 int		draw(t_data *mlx);
 int		background(t_data *mlx);
 int		event_caller(t_data *mlx, t_img *img);
@@ -77,6 +78,6 @@ int		mouse_hook(int button, int x, int y, t_data *mlx);
 int		potency(int number, int power);
 float	burnship(double num_r, double num_i, t_data *prop);
 double	r_num(int x, t_data *f);
-float		julia(double num_r, double num_i, t_data *prop);
+float	julia(double num_r, double num_i, t_data *prop);
 #endif // FRACTOL_H
 
