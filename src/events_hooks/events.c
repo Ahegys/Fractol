@@ -6,7 +6,7 @@
 /*   By: afelipe- <afelipe->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:03:15 by afelipe-          #+#    #+#             */
-/*   Updated: 2022/12/12 16:23:38 by afelipe-         ###   ########.fr       */
+/*   Updated: 2022/12/13 00:37:00 by afelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,14 @@ int	key_hook(int key_code, t_data *mlx)
 
 int		mouse_hook(int button, int x, int y, t_data *mlx)
 {
-	printf("%i\n, %i\n", x, y);
-	if (button == 4)
+	if (button == 4 && x)
 	{
 		mlx->frac.max_r_num -= mlx->frac.max_r_num * 0.115;
 		mlx->frac.min_r_num -= mlx->frac.min_r_num * 0.115;
 		mlx->frac.min_i_num -= mlx->frac.min_i_num * 0.115;
 		mlx->frac.max_i_num -= mlx->frac.max_i_num * 0.115;
 	}
-	if (button == 5)
+	if (button == 5 && y)
 	{
 		mlx->frac.max_r_num += mlx->frac.max_r_num * 0.155;
 		mlx->frac.min_r_num += mlx->frac.min_r_num * 0.155;
@@ -70,11 +69,12 @@ int	event_caller(t_data *mlx, t_img *img)
 	mlx->img = *img;
 	mandel_set(mlx);
 	mlx_hook(mlx->win, 6, 1L << 6, tracker, mlx);
-	mlx_mouse_hook(mlx->win, &mouse_hook, mlx);
+	mlx_hook(mlx->win, 4, 1L << 2, &mouse_hook, mlx);
 	mlx_loop_hook(mlx->init, &render, mlx);
 	mlx_key_hook(mlx->win, &key_hook, mlx);
 	mlx_hook(mlx->win, 17, 0L, &close_window, mlx);
 	mlx_loop(mlx->init);
+	free(mlx);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: afelipe- <afelipe->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:03:37 by afelipe-          #+#    #+#             */
-/*   Updated: 2022/12/12 16:46:28 by afelipe-         ###   ########.fr       */
+/*   Updated: 2022/12/13 00:33:09 by afelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	screen(t_data *mlx)
 
 	mlx->init = mlx_init();
 	mlx->win = mlx_new_window(mlx->init, WIDTH, HEIGHT, "Fractal");
-	
 	event_caller(mlx, &img);
+	free(mlx);
 	return(1);
 
 }

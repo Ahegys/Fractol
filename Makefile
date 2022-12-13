@@ -24,7 +24,7 @@ CRET =  ar -rcs $(NAME) $@
 	@printf "\x1b[38;5;40m >> Convert to objects: \033[0m  \x1b[38;5;196m[\033[0m \x1b[38;5;11m${CRET}\033[0m \x1b[38;5;196m]\033[0m\n"
 	@$(CRET)
 	
-BIN = cc $(FLAGS) $(FILES) ./ft_printf/libftprintf.a $(MLX) -o fractol
+BIN = cc -g $(FLAGS) $(FILES) ./ft_printf/libftprintf.a $(MLX) -o fractol
 
 $(NAME):	$(OBJS)
 	@printf "\x1b[38;5;39m >> Generating Binary ... \033[0m \x1b[38;5;196m[\033[0m \x1b[38;5;11m${BIN}\033[0m \x1b[38;5;196m]\033[0m\n"

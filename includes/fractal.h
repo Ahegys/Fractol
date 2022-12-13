@@ -6,13 +6,12 @@
 /*   By: afelipe- <afelipe->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:03:03 by afelipe-          #+#    #+#             */
-/*   Updated: 2022/12/12 20:00:57 by afelipe-         ###   ########.fr       */
+/*   Updated: 2022/12/13 01:45:01 by afelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
-#include <stdio.h>
 #include <mlx.h>
 #include "../ft_printf/ft_printf.h"
 #include <unistd.h>
@@ -61,21 +60,25 @@ typedef	struct l_data
 	int		colors;
 	t_props	frac;
 	t_mouse	pos;
+	
 }				t_data;
 
 void	mandel_set(t_data *mlx);
 int		screen(t_data *mlx);
 int     key_hook(int key_code, t_data *mlx);
 float	mandelbrot(double num_r, double num_i, t_data *prop);
+int		digits(int arg);
+double	float_conv(const char *str);
 double	i_num(int y, t_data *f);
-int		set_fractal(int x, int y, int i, t_data *mlx);
+int		set_fractal(int x, int y, double i, t_data *mlx);
+int		doubles(const char *str);
 int 	cmp(const char *s1, const char *s2);
 int		close_window(t_data *mlx);
 int		draw(t_data *mlx);
 int		background(t_data *mlx);
 int		event_caller(t_data *mlx, t_img *img);
 void	pixel(t_data *mlx, int x, int y, int color);
-int		mouse_hook(int button, int x, int y, t_data *mlx);
+int		mouse_hook(int button, int x ,int y, t_data *mlx);
 int		potency(int number, int power);
 float	burnship(double num_r, double num_i, t_data *prop);
 double	r_num(int x, t_data *f);
