@@ -10,7 +10,7 @@ MAIN = ./main.c
 # =======================================================ARCHIVES-END=============================================
 FLAGS = -Wall -Werror -Wextra -lm
 
-MLX = -lmlx -lXext -lX11
+MLX = -Lminilibx -lmlx -lXext -lX11
 
 OBJS = $(FILES:%.c=%.o)
 
@@ -18,17 +18,19 @@ COM =  cc -c $(FLAGS) $(MLX) $< -o $@
 
 CRET =  ar -rcs $(NAME) $@
 
-%.o:	%.c
-	@printf "\x1b[38;5;40m >> Compiling:\033[0m \x1b[38;5;196m[\033[0m \x1b[38;5;11m${COM}\033[0m \x1b[38;5;196m]\033[0m\n"
-	@$(COM)
-	@printf "\x1b[38;5;40m >> Convert to objects: \033[0m  \x1b[38;5;196m[\033[0m \x1b[38;5;11m${CRET}\033[0m \x1b[38;5;196m]\033[0m\n"
-	@$(CRET)
+#%.o:	%.c
+#	@printf "\x1b[38;5;40m >> Compiling:\033[0m \x1b[38;5;196m[\033[0m \x1b[38;5;11m${COM}\033[0m \x1b[38;5;196m]\033[0m\n"
+#	@$(COM)
+#	@printf "\x1b[38;5;40m >> Convert to objects: \033[0m  \x1b[38;5;196m[\033[0m \x1b[38;5;11m${CRET}\033[0m \x1b[38;5;196m]\033[0m\n"
+#	@$(CRET)
 	
 BIN = cc -g $(FLAGS) $(FILES) ./ft_printf/libftprintf.a $(MLX) -o fractol
 
 $(NAME):	$(OBJS)
 	@printf "\x1b[38;5;39m >> Generating Binary ... \033[0m \x1b[38;5;196m[\033[0m \x1b[38;5;11m${BIN}\033[0m \x1b[38;5;196m]\033[0m\n"
+	make -C ./ft_printf/
 	@$(BIN)
+
 all:	$(NAME)
 
 RMO = rm -rf $(OBJS)
@@ -42,6 +44,7 @@ clean:
 fclean:clean
 	@printf "\x1b[38;5;196m Removing:\033[0m \x1b[38;5;130m${RMN}\033[0m\n"
 	@$(RMN)
+	make fclean -C ./ft_printf/
 
 pretty:
 		@printf "\x1b[48;5;22mRebuilding ...\033[0m\n"

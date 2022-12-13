@@ -6,36 +6,64 @@
 /*   By: afelipe- <afelipe->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:02:55 by afelipe-          #+#    #+#             */
-/*   Updated: 2022/12/13 03:45:47 by afelipe-         ###   ########.fr       */
+/*   Updated: 2022/12/13 20:02:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/fractal.h"
-int	msg()
+
+void	init_j(t_data *mlx)
 {
-	ft_printf("\x1b[38;5;196mInvalid Argument!\033[0m");
-	return (1);
+	mlx->julia.complex_x = 0;
+	mlx->julia.complex_y = 0;
+	mlx->julia.animation = 0;
+}
+void	phrases(void)
+{
+	ft_printf("\n==== Please enter a valid argument ====\n");
+	ft_printf("|Fractals available:                  |\n");
+	ft_printf("|- Mandelbrot                         |\n");
+	ft_printf("|- Tricorn                            |\n");
+	ft_printf("|- Julia [x] [y]                      |\n");
+	ft_printf("=======================================\n");
+	ft_printf ("\nJulia Fractal Instructions:\n");
+	ft_printf("\n-Select values between -2 and 2 for the X and Y \n\
+and form different sets of the fractol julia.\n");
+	ft_printf("-Suggestion: 0.34  -0.05\n");
+	ft_printf("-Suggestio: -0.835 -0.2321\n");
+	ft_printf("-Suggestion: 0.285  0.01 \n\n\n");
 }
 
-int main(int ac, char *av[])
+char	*lower_case(char *str)
 {
-	t_data mlx;
-	
-	if (ac < 2 || ac > 4)
-		return (msg());
-	else if (cmp("Mandelbrot", av[1]) == 0)
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		if (ac > 2)
-			return (ft_printf("No parameter in Mandelbrot!"));
-		screen(&mlx);
-		ft_printf("\x1b[38;5;10m Mandelbrot run! \033[0m");
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] += 32;
+		i++;
 	}
-	else if (cmp("Julia", av[1]) == 0)
+	return (str);
+}
+
+int	main(int argc, char **argv)
+{
+	char	*temp;
+	t_data	mlx;
+
+	init_j(&mlx);
+	if (count_args(argc, argv, &mlx) != 0)
 	{
-		if (ac != 4)
-				return(ft_printf("few parameters in julia!"));
-		screen(&mlx);
-		ft_printf("\x1b[38;5;10m Julia run! \033[0m");
+		phrases();
+		return (-1);
 	}
-	return(0);
+	temp = lower_case(argv[1]);
+	if (check_frac(temp, &mlx, argc) != 0)
+	{
+		phrases();
+		return (-1);
+	}
+	return (0);
 }
