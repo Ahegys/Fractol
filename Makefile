@@ -4,7 +4,7 @@ FILES = $(MAIN) $(SRC) $(UTILS)
 
 SRC = ./src/window.c ./src/print_pixel.c ./src/events_hooks/events.c
 
-UTILS = ./utils/math_code.c ./utils/draw.c
+UTILS = ./utils/math_code.c ./utils/draw.c ./utils/check_args.c
 
 MAIN = ./main.c
 # =======================================================ARCHIVES-END=============================================
@@ -24,7 +24,7 @@ CRET =  ar -rcs $(NAME) $@
 	@printf "\x1b[38;5;40m >> Convert to objects: \033[0m  \x1b[38;5;196m[\033[0m \x1b[38;5;11m${CRET}\033[0m \x1b[38;5;196m]\033[0m\n"
 	@$(CRET)
 	
-BIN = cc $(FLAGS) $(FILES) $(MLX) -o fractal
+BIN = cc $(FLAGS) $(FILES) ./ft_printf/libftprintf.a $(MLX) -o fractol
 
 $(NAME):	$(OBJS)
 	@printf "\x1b[38;5;39m >> Generating Binary ... \033[0m \x1b[38;5;196m[\033[0m \x1b[38;5;11m${BIN}\033[0m \x1b[38;5;196m]\033[0m\n"
@@ -33,7 +33,7 @@ all:	$(NAME)
 
 RMO = rm -rf $(OBJS)
 
-RMN =  rm -rf $(NAME) fractal
+RMN =  rm -rf $(NAME) fractol
 
 clean:
 	@printf "\x1b[38;5;196m Removing:\033[0m \x1b[38;5;130m${RMO}\033[0m\n"

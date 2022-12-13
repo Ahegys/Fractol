@@ -6,7 +6,7 @@
 /*   By: afelipe- <afelipe->                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:03:03 by afelipe-          #+#    #+#             */
-/*   Updated: 2022/12/12 16:40:41 by afelipe-         ###   ########.fr       */
+/*   Updated: 2022/12/12 20:00:57 by afelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FRACTOL_H
 #include <stdio.h>
 #include <mlx.h>
+#include "../ft_printf/ft_printf.h"
 #include <unistd.h>
 #include <stdlib.h>
 # define WIDTH 700
